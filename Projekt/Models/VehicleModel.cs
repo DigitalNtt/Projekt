@@ -22,5 +22,6 @@ namespace Projekt.Models
 
         [ForeignKey("MakeId")]
         public virtual VehicleMake VehicleMake { get; set; }
+
     }
 }
