@@ -12,10 +12,12 @@ namespace Projekt.Models
         [Key]
         public Int32 id { get; set; }
 
-        [StringLength(50)]
+        [Required(ErrorMessage = "{0} is required")]
+        [StringLength(250)]
         public string Name { get; set; }
 
-        [StringLength(250)]
+        [Required(ErrorMessage = "{0} is required")]
+        [StringLength(50)]
         public string Abrv { get; set; }
 
         public Int32 MakeId { get; set; }

@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Projekt;
 using Projekt.Models;
 
 namespace Projekt.Controllers
