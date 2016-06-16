@@ -20,6 +20,7 @@ namespace MVC.Models
         [StringLength(50)]
         public string Abrv { get; set; }
 
+        [Display(Name = "Make")]
         public Int32 MakeId { get; set; }
 
         [ForeignKey("MakeId")]
