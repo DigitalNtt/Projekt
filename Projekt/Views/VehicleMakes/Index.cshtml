@@ -1,21 +1,36 @@
-﻿@model IEnumerable<MVC.Models.VehicleMake>
-
+﻿@*@model IEnumerable<MVC.Models.VehicleMake>*@
+@model PagedList.IPagedList<MVC.Models.VehicleMake>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Makes";
 }
 
-<h2>Index</h2>
+<h2>Makes</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm("Index", "VehicleMakes", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
 <table class="table">
+
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
+    @*<tr>
         <th>
-            @Html.DisplayNameFor(model => model.Abrv)
+            @Html.DisplayNameFor(model => model.Name)
+        </th>*@
+        <th>
+            Abrv
+            @*@Html.DisplayNameFor(model => model.Abrv)*@
         </th>
         <th></th>
     </tr>
@@ -37,3 +52,9 @@
 }
 
 </table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC.Models;
+using PagedList;
 
 namespace MVC.Controllers
 {
@@ -15,9 +16,44 @@ namespace MVC.Controllers
         private ProjektContext db = new ProjektContext();
 
         // GET: VehicleMakes
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.VehicleMakes.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var makes = from s in db.VehicleMakes
+                        select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                makes = makes.Where(s => s.Name.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    makes = makes.OrderByDescending(s => s.Name);
+                    break;
+                default:
+                    makes = makes.OrderBy(s => s.Name);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            
+            return View(makes.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: VehicleMakes/Details/5

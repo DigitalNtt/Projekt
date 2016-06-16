@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC.Models;
+using PagedList;
 
 namespace MVC.Controllers
 {
@@ -15,10 +16,47 @@ namespace MVC.Controllers
         private ProjektContext db = new ProjektContext();
 
         // GET: VehicleModels
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var vehicleModels = db.VehicleModels.Include(v => v.VehicleMake);
-            return View(vehicleModels.ToList());
+            //var vehicleModels = db.VehicleModels.Include(v => v.VehicleMake);
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var vehicle = from s in db.VehicleModels.Include(v => v.VehicleMake)
+                select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                vehicle = vehicle.Where(s => s.Name.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    vehicle = vehicle.OrderByDescending(s => s.Name);
+                    break;
+                default:
+                    vehicle = vehicle.OrderBy(s => s.Name);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(vehicle.ToPagedList(pageNumber, pageSize));
+            
+            //return View(vehicleModels.ToList());
         }
 
         // GET: VehicleModels/Details/5
