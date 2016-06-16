@@ -13,6 +13,7 @@ namespace MVC.Models
 
         [Required(ErrorMessage = "{0} is required")]
         [StringLength(250)]
+        [Display(Name = "Make")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "{0} is required")]
