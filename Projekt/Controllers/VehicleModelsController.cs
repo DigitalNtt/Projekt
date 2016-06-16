@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Projekt.Models;
+using MVC.Models;
 
-namespace Projekt.Controllers
+namespace MVC.Controllers
 {
     public class VehicleModelsController : Controller
     {

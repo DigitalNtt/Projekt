@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Projekt.Models
+namespace MVC.Models
 {
     public class VehicleMake
     {

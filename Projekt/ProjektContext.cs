@@ -17,7 +17,7 @@ public class ProjektContext : DbContext
     {
     }
 
-    public System.Data.Entity.DbSet<Projekt.Models.VehicleMake> VehicleMakes { get; set; }
+    public System.Data.Entity.DbSet<MVC.Models.VehicleMake> VehicleMakes { get; set; }
 
-    public System.Data.Entity.DbSet<Projekt.Models.VehicleModel> VehicleModels { get; set; }
+    public System.Data.Entity.DbSet<MVC.Models.VehicleModel> VehicleModels { get; set; }
 }
