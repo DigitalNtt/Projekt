@@ -50,7 +50,7 @@ namespace Projekt.DAL.Controllers
                     break;
             }
 
-            int pageSize = 3;
+            int pageSize = 15;
             int pageNumber = (page ?? 1);
             
             return View(makes.ToPagedList(pageNumber, pageSize));

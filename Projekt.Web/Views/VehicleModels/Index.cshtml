@@ -23,7 +23,8 @@
             @*@Html.DisplayNameFor(model => model.Make)*@
         </th>
         <th>
-            Name
+            Model
+            @Html.ActionLink("Model", "Index", new { sortOrder = ViewBag.NameSortParm })
             @*@Html.DisplayNameFor(model => model.Name)*@
         </th>
         <th>

@@ -18,7 +18,7 @@ namespace Projekt.DAL
         {
             //var vehicleModels = db.VehicleModels.Include(v => v.VehicleMake);
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "desc" : "";
 
             if (searchString != null)
             {
@@ -36,20 +36,20 @@ namespace Projekt.DAL
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                vehicle = vehicle.Where(s => s.Name.Contains(searchString));
+                vehicle = vehicle.Where(s => s.VehicleMake.Name.Contains(searchString));
             }
 
             switch (sortOrder)
             {
-                case "name_desc":
-                    vehicle = vehicle.OrderByDescending(s => s.Name);
+                case "desc":
+                    vehicle = vehicle.OrderByDescending(s => s.VehicleMake.Name);
                     break;
                 default:
-                    vehicle = vehicle.OrderBy(s => s.Name);
+                    vehicle = vehicle.OrderBy(s => s.VehicleMake.Name);
                     break;
             }
 
-            int pageSize = 3;
+            int pageSize = 15;
             int pageNumber = (page ?? 1);
 
             return View(vehicle.ToPagedList(pageNumber, pageSize));
