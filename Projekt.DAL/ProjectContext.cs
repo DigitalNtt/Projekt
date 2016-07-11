@@ -1,12 +1,12 @@
-﻿using System.Data.Entity;
-using Projekt.DAL.Models;
+﻿using Projekt.DAL.Models;
+using System.Data.Entity;
 
 namespace Projekt.DAL
 {
     public class ProjektContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
-        // 
+        //
         // If you want Entity Framework to drop and regenerate your database
         // automatically whenever you change your model schema, please use data migrations.
         // For more information refer to the documentation:
@@ -19,6 +19,5 @@ namespace Projekt.DAL
         public System.Data.Entity.DbSet<VehicleMake> VehicleMakes { get; set; }
 
         public System.Data.Entity.DbSet<VehicleModel> VehicleModels { get; set; }
-
     }
 }

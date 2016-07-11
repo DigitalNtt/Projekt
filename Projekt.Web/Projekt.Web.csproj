@@ -248,6 +248,10 @@
       <Project>{d0d9aa83-4ca0-4295-8be2-9585449cdf4c}</Project>
       <Name>Projekt.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Projekt.Service\Projekt.Service.csproj">
+      <Project>{279a0d85-2dbd-4f91-9e43-e93c761501d1}</Project>
+      <Name>Projekt.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,13 +1,14 @@
-﻿using System;
+﻿using PagedList;
+using Projekt.DAL;
+using Projekt.DAL.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using Projekt.DAL.Models;
-using PagedList;
 
-namespace Projekt.DAL
+namespace Projekt.Service
 {
     public class VehicleModelsController : Controller
     {
@@ -32,7 +33,7 @@ namespace Projekt.DAL
             ViewBag.CurrentFilter = searchString;
 
             var vehicle = from s in db.VehicleModels.Include(v => v.VehicleMake)
-                select s;
+                          select s;
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -44,6 +45,7 @@ namespace Projekt.DAL
                 case "desc":
                     vehicle = vehicle.OrderByDescending(s => s.VehicleMake.Name);
                     break;
+
                 default:
                     vehicle = vehicle.OrderBy(s => s.VehicleMake.Name);
                     break;
@@ -53,7 +55,7 @@ namespace Projekt.DAL
             int pageNumber = (page ?? 1);
 
             return View(vehicle.ToPagedList(pageNumber, pageSize));
-            
+
             //return View(vehicleModels.ToList());
         }
 
@@ -80,7 +82,7 @@ namespace Projekt.DAL
         }
 
         // POST: VehicleModels/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -114,7 +116,7 @@ namespace Projekt.DAL
         }
 
         // POST: VehicleModels/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

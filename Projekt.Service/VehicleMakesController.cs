@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PagedList;
+using Projekt.DAL;
+using Projekt.DAL.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Projekt.DAL.Models;
-using PagedList;
 
-namespace Projekt.DAL.Controllers
+namespace Projekt.Service
 {
     public class VehicleMakesController : Controller
     {
@@ -45,6 +44,7 @@ namespace Projekt.DAL.Controllers
                 case "name_desc":
                     makes = makes.OrderByDescending(s => s.Name);
                     break;
+
                 default:
                     makes = makes.OrderBy(s => s.Name);
                     break;
@@ -52,7 +52,7 @@ namespace Projekt.DAL.Controllers
 
             int pageSize = 15;
             int pageNumber = (page ?? 1);
-            
+
             return View(makes.ToPagedList(pageNumber, pageSize));
         }
 
@@ -78,7 +78,7 @@ namespace Projekt.DAL.Controllers
         }
 
         // POST: VehicleMakes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -110,7 +110,7 @@ namespace Projekt.DAL.Controllers
         }
 
         // POST: VehicleMakes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
