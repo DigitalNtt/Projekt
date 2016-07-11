@@ -59,8 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VehicleMakesController.cs" />
-    <Compile Include="VehicleModelsController.cs" />
+    <Compile Include="Controllers\VehicleMakesController.cs" />
+    <Compile Include="Controllers\VehicleModelsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Projekt.DAL\Projekt.DAL.csproj">
