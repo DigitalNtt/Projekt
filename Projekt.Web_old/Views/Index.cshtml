@@ -1,15 +1,16 @@
 ﻿@using PagedList.Mvc;
-@model PagedList.IPagedList<Projekt.Model.VehicleModelPoco>
+@model PagedList.IPagedList<Projekt.Model.VehicleMakePoco>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Makes";
 }
 
-<h2>Models</h2>
+<h2>Makes</h2>
 
-@*<p>
+<p>
     @Html.ActionLink("Create New", "Create")
-</p>*@
-@using (Html.BeginForm())
+</p>
+@using (Html.BeginForm("Index", "VehicleMakes", FormMethod.Get))
 {
     <p>
         Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
@@ -17,15 +18,15 @@
     </p>
 }
 <table class="table">
+
     <tr>
         <th>
-            @Html.ActionLink("Make", "Index", new { sortOrder = ViewBag.NameSortParm })
-            @*@Html.DisplayNameFor(model => model.Make)*@
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
+    @*<tr>
         <th>
-            Model
-            @*@Html.DisplayNameFor(model => model.Name)*@
-        </th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>*@
         <th>
             Abrv
             @*@Html.DisplayNameFor(model => model.Abrv)*@
@@ -35,9 +36,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.VehicleMake.Name)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
