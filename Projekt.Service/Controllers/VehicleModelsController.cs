@@ -1,6 +1,6 @@
 ﻿using PagedList;
 using Projekt.DAL;
-using Projekt.DAL.Models;
+using Projekt.DAL.Entities;
 using System;
 using System.Data;
 using System.Data.Entity;

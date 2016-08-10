@@ -55,9 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\VehicleMake.cs" />
-    <Compile Include="Models\VehicleModel.cs" />
-    <Compile Include="ProjectContext.cs" />
+    <Compile Include="Entities\VehicleMake.cs" />
+    <Compile Include="Entities\VehicleModel.cs" />
+    <Compile Include="Mapping\VehicleMakeMap.cs" />
+    <Compile Include="Mapping\VehicleModelMap.cs" />
+    <Compile Include="ProjektContext.cs" />
+    <Compile Include="ProjektInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,13 +1,13 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Projekt.Model.Interface;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Projekt.DAL.Models
+namespace Projekt.Model
 {
-    public class VehicleModel
+    public class VehicleModelPoco : IVehicleModel
     {
         [Key]
-        public Int32 id { get; set; }
+        public int id { get; set; }
 
         [Required(ErrorMessage = "{0} is required")]
         [StringLength(250)]
@@ -18,9 +18,10 @@ namespace Projekt.DAL.Models
         public string Abrv { get; set; }
 
         [Display(Name = "Make")]
-        public Int32 MakeId { get; set; }
+        public int MakeId { get; set; }
 
         [ForeignKey("MakeId")]
-        public virtual VehicleMake VehicleMake { get; set; }
+        public virtual IVehicleMake VehicleMake { get; set; }
+
     }
 }

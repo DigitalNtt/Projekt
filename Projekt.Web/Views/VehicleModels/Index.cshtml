@@ -1,15 +1,15 @@
-﻿@model PagedList.IPagedList<Projekt.DAL.Models.VehicleModel>
-@using PagedList.Mvc;
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Projekt.Model.VehicleModelPoco>
 @{
-    ViewBag.Title = "Models";
+    ViewBag.Title = "Index";
 }
 
 <h2>Models</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
-@using (Html.BeginForm("Index", "VehicleModels", FormMethod.Get))
+</p>*@
+@using (Html.BeginForm())
 {
     <p>
         Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)

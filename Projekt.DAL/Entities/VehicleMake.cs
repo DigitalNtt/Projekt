@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Projekt.DAL.Models
+namespace Projekt.DAL.Entities
 {
     public class VehicleMake
     {
         [Key]
-        public Int32 id { get; set; }
+        public int id { get; set; }
 
         [Required(ErrorMessage = "{0} is required")]
         [StringLength(250)]
@@ -18,6 +17,6 @@ namespace Projekt.DAL.Models
         [StringLength(50)]
         public string Abrv { get; set; }
 
-        public virtual ICollection<VehicleModel> VehicleModel { get; set; }
+        public virtual ICollection<VehicleModel> VehicleModels { get; set; }
     }
 }
