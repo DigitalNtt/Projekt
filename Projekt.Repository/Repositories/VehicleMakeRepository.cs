@@ -24,6 +24,18 @@ namespace Projekt.Repository.Repositories
             this.Repository = repository;
         }
 
+        public async Task<IEnumerable<IVehicleMake>> GetAsync()
+        {
+            try
+            {
+                return Mapper.Map<IEnumerable<IVehicleMake>>(await Repository.GetWhere<VehicleMake>().OrderByDescending(r => r.id).ToListAsync());
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public virtual async Task<IEnumerable<IVehicleMake>> GetAsync(VehicleMakeFilter filter = null)
         {
             try
@@ -57,7 +69,7 @@ namespace Projekt.Repository.Repositories
             }
         }
 
-        public virtual async Task<IVehicleMake> GetAsync(int? id)
+        public virtual async Task<IVehicleMake> GetAsync(int id)
         {
             try
             {
@@ -92,8 +104,30 @@ namespace Projekt.Repository.Repositories
                 throw e;
             }
         }
-
-        public virtual Task<int> DeleteAsync(Guid? id)
+        public virtual Task<int> AddAsync(VehicleMake VehicleMake)
+        {
+            try
+            {
+                VehicleMake.id = Repository.GetWhere<VehicleMake>().OrderByDescending(a => a.id).Select(a => a.id).FirstOrDefault() + 1;
+                return Repository.AddAsync(Mapper.Map<VehicleMake>(VehicleMake));
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public virtual Task<int> DeleteAsync(int id)
+        {
+            try
+            {
+                return Repository.DeleteAsync<VehicleMake>(id);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public virtual Task<int> DeleteAsync(int? id)
         {
             try
             {

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Projekt.Model.Interface;
 using System.ComponentModel.DataAnnotations.Schema;
+using System;
 
 namespace Projekt.Model
 {
@@ -20,8 +21,7 @@ namespace Projekt.Model
         [Display(Name = "Make")]
         public int MakeId { get; set; }
 
-        [ForeignKey("MakeId")]
+        //[ForeignKey("MakeId")]
         public virtual IVehicleMake VehicleMake { get; set; }
-
     }
 }

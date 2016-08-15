@@ -30,7 +30,7 @@ namespace Projekt.Repository.Repositories
         {
             return DbContext.Set<T>().ToListAsync();
         }
-        public virtual Task<T> GetByIDAsync<T>(Guid? id) where T : class
+        public virtual Task<T> GetByIDAsync<T>(int? id) where T : class
         {
             return DbContext.Set<T>().FindAsync(id);
         }
@@ -92,7 +92,7 @@ namespace Projekt.Repository.Repositories
                 throw e;
             }
         }
-        public virtual async Task<int> DeleteAsync<T>(Guid? id) where T : class
+        public virtual async Task<int> DeleteAsync<T>(int? id) where T : class
         {
             var entity = await GetByIDAsync<T>(id);
             if (entity == null)

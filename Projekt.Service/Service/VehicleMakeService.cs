@@ -17,6 +17,17 @@ namespace Projekt.Service
         {
             this.Repository = repository;
         }
+        public virtual Task<IEnumerable<IVehicleMake>> GetAsync()
+        {
+            try
+            {
+                return Repository.GetAsync();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         public virtual Task<IEnumerable<IVehicleMake>> GetAsync(VehicleMakeFilter filter = null)
         {
             try
@@ -28,7 +39,7 @@ namespace Projekt.Service
                 throw e;
             }
         }
-        public Task<IVehicleMake> GetAsync(int? id)
+        public Task<IVehicleMake> GetAsync(int id)
         {
             try
             {
@@ -39,11 +50,35 @@ namespace Projekt.Service
                 throw e;
             }
         }
+
+        public async Task<int> AddAsync(IVehicleMake vehicleMake)
+        {
+            try
+            {
+                return await Repository.AddAsync(vehicleMake);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public async Task<int> UpdateAsync(IVehicleMake vehicleMake)
         {
             try
             {
                 return await Repository.UpdateAsync(vehicleMake);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public async Task<int> DeleteAsync(int? id)
+        {
+            try
+            {
+                return await Repository.DeleteAsync(id);
             }
             catch (Exception e)
             {

@@ -38,27 +38,27 @@ namespace Projekt.DAL
                 {
                     Name = "Panda",
                     Abrv = "pnd",
-                    MakeId =1
+                    MakeId=1
                 },
                 new VehicleModel()
                 {
                     Name = "Punto",
                     Abrv = "pnt",
-                    MakeId = 1
+                    MakeId=1
                 },
 
                 new VehicleModel()
                 {
                     Name = "A4",
                     Abrv = "OOOO",
-                    MakeId = 2
+                    MakeId=2
                 },
 
                 new VehicleModel()
                 {
                     Name = "X5",
                     Abrv = "5",
-                    MakeId = 3
+                    MakeId=3
                 }
             };
             VehicleModels.ForEach(m => context.VehicleModels.Add(m));
