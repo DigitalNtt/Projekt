@@ -12,7 +12,7 @@ namespace Projekt.Service.Interface
     public interface IVehicleModelService
     {
         Task<IEnumerable<IVehicleModel>> GetAsync(VehicleModelFilter filter = null);
-        Task<IVehicleModel> GetAsync(int id);
+        Task<IVehicleModel> GetAsync(Guid id);
         Task<int> UpdateAsync(IVehicleModel vehicleModel);
     }
 }
