@@ -7,12 +7,15 @@ using Projekt.Model.Interface;
 using Projekt.Repository.Filters;
 using Projekt.Service.Interface;
 using Projekt.Repository.Interface;
+using Ninject;
 
 namespace Projekt.Service
 {
     public class VehicleMakeService : IVehicleMakeService
     {
         protected IVehicleMakeRepository Repository { get; private set; }
+
+        [Inject]
         public VehicleMakeService(IVehicleMakeRepository repository)
         {
             this.Repository = repository;

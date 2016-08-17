@@ -65,11 +65,12 @@ namespace Projekt.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            //var VehicleMakeService = kernel.Get<Projekt.Service.Interface.IVehicleMakeService>();
-            //kernel.Rebind<Projekt.Service.Interface.IVehicleMakeService>().To(VehicleMakeService.GetType());
+            var VehicleModelService = kernel.Get<Projekt.Service.Interface.IVehicleModelService>();
+            kernel.Rebind<Projekt.Service.Interface.IVehicleModelService>().To(VehicleModelService.GetType());
 
-            //var VehicleModelService = kernel.Get< Projekt.Service.Interface.IVehicleModelService>();
-            //kernel.Rebind<Projekt.Service.Interface.IVehicleModelService>().To(VehicleModelService.GetType());
+            var VehicleMakeService = kernel.Get<Projekt.Service.Interface.IVehicleMakeService>();
+            kernel.Rebind<Projekt.Service.Interface.IVehicleMakeService>().To(VehicleMakeService.GetType());
+
         }        
     }
 }
