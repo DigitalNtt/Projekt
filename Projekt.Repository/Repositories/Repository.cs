@@ -41,8 +41,7 @@ namespace Projekt.Repository.Repositories
 
         public virtual async Task<int> AddAsync<T>(T entity) where T : class
         {
-            try
-            {
+
                 DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
                 if (dbEntityEntry.State != EntityState.Detached)
                 {
@@ -53,17 +52,12 @@ namespace Projekt.Repository.Repositories
                     DbContext.Set<T>().Add(entity);
                 }
                 return await DbContext.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+
         }
 
         public virtual async Task<int> UpdateAsync<T>(T entity) where T : class
         {
-            try
-            {
+
                 DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
                 if (dbEntityEntry.State == EntityState.Detached)
                 {
@@ -71,17 +65,12 @@ namespace Projekt.Repository.Repositories
                 }
                 dbEntityEntry.State = EntityState.Modified;
                 return await DbContext.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+
         }
 
         public virtual async Task<int> DeleteAsync<T>(T entity) where T : class
         {
-            try
-            {
+
                 DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
                 if (dbEntityEntry.State != EntityState.Deleted)
                 {
@@ -93,11 +82,7 @@ namespace Projekt.Repository.Repositories
                     DbContext.Set<T>().Remove(entity);
                 }
                 return await DbContext.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+
         }
 
         public virtual async Task<int> DeleteAsync<T>(int? id) where T : class

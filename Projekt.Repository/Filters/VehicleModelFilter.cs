@@ -19,15 +19,10 @@ namespace Projekt.Repository.Filters
 
         public VehicleModelFilter(string searchString, int pageNumber, int pageSize)
         {
-            try
-            {
+
                 SearchString = searchString;
                 SetPageNumberAndSize(pageNumber, pageSize);
-            }
-            catch (ArgumentException e)
-            {
-                throw e;
-            }
+
         }
     }
 }

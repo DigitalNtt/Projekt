@@ -13,6 +13,6 @@ namespace Projekt.Repository.Interface
 
         Task<int> DeleteAsync<T>(T entity) where T : class;
 
-        Task<int> DeleteAsync<T>(Guid id) where T : class;
+        Task<int> DeleteAsync<T>(int id) where T : class;
     }
 }
