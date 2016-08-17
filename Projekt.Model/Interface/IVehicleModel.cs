@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Projekt.Model.Interface
+﻿namespace Projekt.Model.Interface
 {
     public interface IVehicleModel
     {

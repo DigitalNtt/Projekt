@@ -1,9 +1,9 @@
 ﻿using Projekt.DAL.Entities;
 using Projekt.DAL.Mapping;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading.Tasks;
-using System;
 
 namespace Projekt.DAL
 {
@@ -37,12 +37,16 @@ namespace Projekt.DAL
             base.OnModelCreating(modelBuilder);
         }
     }
+
     public interface IProjektContext : IDisposable
     {
         DbSet<VehicleMake> VehicleMakes { get; set; }
         DbSet<VehicleModel> VehicleModels { get; set; }
+
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
+
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
+
         Task<int> SaveChangesAsync();
     }
 }

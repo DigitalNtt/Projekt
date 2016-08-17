@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projekt.DAL.Entities
@@ -24,4 +23,3 @@ namespace Projekt.DAL.Entities
         public virtual VehicleMake VehicleMake { get; set; }
     }
 }
-

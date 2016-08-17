@@ -2,7 +2,7 @@
 
 namespace Projekt.Service
 {
-    class DIModule : Ninject.Modules.NinjectModule
+    internal class DIModule : Ninject.Modules.NinjectModule
     {
         public override void Load()
         {

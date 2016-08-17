@@ -1,14 +1,14 @@
-﻿using System;
-using System.Threading.Tasks;
-using Projekt.DAL;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity;
-using System.Transactions;
+﻿using Projekt.DAL;
 using Projekt.Repository.Interface;
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Projekt.Repository.Repositories
 {
-    class UnitOfWork : IUnitOfWork
+    internal class UnitOfWork : IUnitOfWork
     {
         protected ProjektContext DbContext { get; set; }
 

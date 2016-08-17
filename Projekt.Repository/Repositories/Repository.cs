@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Projekt.DAL;
 using Projekt.Repository.Interface;
-using Projekt.DAL;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Projekt.Repository.Repositories
 {
@@ -13,6 +13,7 @@ namespace Projekt.Repository.Repositories
     {
         protected IProjektContext DbContext { get; private set; }
         protected IUnitOfWorkFactory UnitOfWorkFactory { get; private set; }
+
         public Repository(IProjektContext db, IUnitOfWorkFactory unitOfWorkFactory)
         {
             if (db == null)
@@ -22,18 +23,22 @@ namespace Projekt.Repository.Repositories
             DbContext = db;
             UnitOfWorkFactory = unitOfWorkFactory;
         }
+
         public IUnitOfWork CreateUnitOfWork()
         {
             return UnitOfWorkFactory.CreateUnitOfWork();
         }
+
         public virtual Task<List<T>> GetAsync<T>() where T : class
         {
             return DbContext.Set<T>().ToListAsync();
         }
+
         public virtual Task<T> GetByIDAsync<T>(int? id) where T : class
         {
             return DbContext.Set<T>().FindAsync(id);
         }
+
         public virtual async Task<int> AddAsync<T>(T entity) where T : class
         {
             try
@@ -54,6 +59,7 @@ namespace Projekt.Repository.Repositories
                 throw e;
             }
         }
+
         public virtual async Task<int> UpdateAsync<T>(T entity) where T : class
         {
             try
@@ -71,6 +77,7 @@ namespace Projekt.Repository.Repositories
                 throw e;
             }
         }
+
         public virtual async Task<int> DeleteAsync<T>(T entity) where T : class
         {
             try
@@ -92,6 +99,7 @@ namespace Projekt.Repository.Repositories
                 throw e;
             }
         }
+
         public virtual async Task<int> DeleteAsync<T>(int? id) where T : class
         {
             var entity = await GetByIDAsync<T>(id);
@@ -101,6 +109,7 @@ namespace Projekt.Repository.Repositories
             }
             return await DeleteAsync<T>(entity);
         }
+
         public virtual IQueryable<T> GetWhere<T>() where T : class
         {
             return DbContext.Set<T>();

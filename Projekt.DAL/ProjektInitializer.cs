@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Projekt.DAL.Entities;
+using System.Collections.Generic;
 using System.Data.Entity;
-using Projekt.DAL.Entities;
 
 namespace Projekt.DAL
 {
-    class ProjektInitializer : DropCreateDatabaseAlways<ProjektContext>
+    internal class ProjektInitializer : DropCreateDatabaseAlways<ProjektContext>
     {
         protected override void Seed(ProjektContext context)
         {

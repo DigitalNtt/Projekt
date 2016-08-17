@@ -1,7 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Projekt.Model.Interface;
-using System.ComponentModel.DataAnnotations.Schema;
-using System;
+﻿using Projekt.Model.Interface;
+using System.ComponentModel.DataAnnotations;
 
 namespace Projekt.Model
 {

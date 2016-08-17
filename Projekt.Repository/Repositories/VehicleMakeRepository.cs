@@ -1,17 +1,15 @@
 ﻿using AutoMapper;
-using Projekt.Repository.Interface;
-using Projekt.Repository.Filters;
-using System.Collections.Generic;
+using PagedList;
+using Projekt.DAL.Entities;
 using Projekt.Model;
 using Projekt.Model.Interface;
-using Projekt.DAL.Entities;
-using System.Threading.Tasks;
-using System.Linq;
-using PagedList;
+using Projekt.Repository.Filters;
+using Projekt.Repository.Interface;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
-using System.Security.Claims;
-using Microsoft.AspNet.Identity;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Projekt.Repository.Repositories
 {
@@ -104,6 +102,7 @@ namespace Projekt.Repository.Repositories
                 throw e;
             }
         }
+
         public virtual Task<int> AddAsync(VehicleMake VehicleMake)
         {
             try
@@ -116,6 +115,7 @@ namespace Projekt.Repository.Repositories
                 throw e;
             }
         }
+
         public virtual Task<int> DeleteAsync(int id)
         {
             try
@@ -127,6 +127,7 @@ namespace Projekt.Repository.Repositories
                 throw e;
             }
         }
+
         public virtual Task<int> DeleteAsync(int? id)
         {
             try

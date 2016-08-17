@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Projekt.Service.Interface;
-using Projekt.Repository.Repositories;
-using Projekt.Repository.Interface;
+﻿using Ninject;
 using Projekt.Model.Interface;
 using Projekt.Repository.Filters;
-using Ninject;
+using Projekt.Repository.Interface;
+using Projekt.Service.Interface;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Projekt.Service
 {
@@ -21,6 +18,7 @@ namespace Projekt.Service
         {
             this.Repository = repository;
         }
+
         public virtual Task<IEnumerable<IVehicleModel>> GetAsync()
         {
             try
@@ -32,6 +30,7 @@ namespace Projekt.Service
                 throw e;
             }
         }
+
         public virtual Task<IEnumerable<IVehicleModel>> GetAsync(VehicleModelFilter filter = null)
         {
             try
@@ -43,6 +42,7 @@ namespace Projekt.Service
                 throw e;
             }
         }
+
         public Task<IVehicleModel> GetAsync(int id)
         {
             try
@@ -54,6 +54,7 @@ namespace Projekt.Service
                 throw e;
             }
         }
+
         public async Task<int> AddAsync(IVehicleModel vehicleModel)
         {
             try
@@ -65,6 +66,7 @@ namespace Projekt.Service
                 throw e;
             }
         }
+
         public async Task<int> UpdateAsync(IVehicleModel vehicleModel)
         {
             try

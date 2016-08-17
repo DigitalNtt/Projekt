@@ -1,15 +1,14 @@
-﻿using Projekt.Repository.Interface;
-using AutoMapper;
-using Projekt.Model.Interface;
+﻿using AutoMapper;
+using Projekt.DAL.Entities;
 using Projekt.Model;
+using Projekt.Model.Interface;
+using Projekt.Repository.Filters;
+using Projekt.Repository.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data.Entity;
-using Projekt.DAL.Entities;
-using Projekt.Repository.Filters;
-using PagedList;
 
 namespace Projekt.Repository.Repositories
 {

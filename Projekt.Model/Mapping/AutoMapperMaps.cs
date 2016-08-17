@@ -1,5 +1,5 @@
-﻿using Projekt.Model.Interface;
-using Projekt.DAL.Entities;
+﻿using Projekt.DAL.Entities;
+using Projekt.Model.Interface;
 
 namespace Projekt.Model.Mapping
 {

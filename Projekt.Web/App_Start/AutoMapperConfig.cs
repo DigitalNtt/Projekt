@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Projekt.Model;
+﻿using Projekt.Model;
 using Projekt.Model.Interface;
 using Projekt.Web.ViewModels;
 

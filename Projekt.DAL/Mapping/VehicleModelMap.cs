@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Projekt.DAL.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using Projekt.DAL.Entities;
 
 namespace Projekt.DAL.Mapping
 {
-    class VehicleModelMap : EntityTypeConfiguration<VehicleModel>
+    internal class VehicleModelMap : EntityTypeConfiguration<VehicleModel>
     {
         public VehicleModelMap()
         {
